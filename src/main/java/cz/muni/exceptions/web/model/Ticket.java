@@ -11,7 +11,7 @@ import java.util.Objects;
  * @sa.date 2014-04-15T05:40:59+0100
  */
 @Entity
-@Table(schema = "exceptions", name = "tickets")
+@Table(name = "tickets")
 public class Ticket implements Serializable {
     
     @Id

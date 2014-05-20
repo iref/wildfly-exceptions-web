@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @sa.date 2014-04-15T05:57:20+0100
  */
 @Entity
-@Table(schema = "exceptions", name = "ticket_occurrences")
+@Table(name = "ticket_occurrences")
 public class TicketOccurrence implements Serializable {
     
     @Id
