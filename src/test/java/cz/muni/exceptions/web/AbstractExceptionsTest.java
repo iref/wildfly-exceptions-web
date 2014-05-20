@@ -16,7 +16,6 @@
 
 package cz.muni.exceptions.web;
 
-import cz.muni.exceptions.web.ExceptionsApplication;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import javax.naming.NamingException;
@@ -28,6 +27,8 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
+import org.jboss.shrinkwrap.resolver.api.maven.coordinate.MavenDependencies;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -45,10 +46,11 @@ public abstract class AbstractExceptionsTest {
     @Inject
     protected BeanManager beanManager;
     
-    public static JavaArchive createDeployment() {
+    public static JavaArchive createDeployment() {        
         return ShrinkWrap.create(JavaArchive.class)
                 .addClasses(AutoConversation.class, AbstractExceptionsTest.class)                
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+                .addAsResource("META-INF/persistence.xml");
     }
     
     @Before

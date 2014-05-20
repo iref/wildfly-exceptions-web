@@ -1,6 +1,7 @@
-package cz.muni.exceptions.pages;
+package cz.muni.exceptions.web.pages;
 
-import cz.muni.exceptions.AbstractExceptionsTest;
+import cz.muni.exceptions.web.pages.ExceptionsPage;
+import cz.muni.exceptions.web.AbstractExceptionsTest;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Archive;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.junit.Test;
 /**
  * Simple test using the WicketTester
  */
-public class TestExceptionsPage extends AbstractExceptionsTest {    
+public class ExceptionsPageTest extends AbstractExceptionsTest {    
     
     @Deployment
     public static Archive<?> getDeployment() {
