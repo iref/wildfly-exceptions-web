@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package cz.muni.exceptions;
+package cz.muni.exceptions.web;
 
+import cz.muni.exceptions.web.ExceptionsApplication;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import javax.naming.NamingException;

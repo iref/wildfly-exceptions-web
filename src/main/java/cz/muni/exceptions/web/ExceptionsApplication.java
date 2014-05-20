@@ -1,6 +1,6 @@
-package cz.muni.exceptions;
+package cz.muni.exceptions.web;
 
-import cz.muni.exceptions.pages.ExceptionsPage;
+import cz.muni.exceptions.web.pages.ExceptionsPage;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

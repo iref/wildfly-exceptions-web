@@ -14,28 +14,33 @@
  * limitations under the License.
  */
 
-package cz.muni.exceptions.db;
+package cz.muni.exceptions.web.db;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T16:27:36+0100
+ * @sa.date 2014-05-20T16:29:24+0100
  */
-public class EntityManagerFactoryProducer {
-
+public class EntityManagerProducer {
+    
+    @Inject
+    private EntityManagerFactory emf;
+    
     @Produces
-    @ApplicationScoped
-    public EntityManagerFactory create() {
-        return Persistence.createEntityManagerFactory("exceptionsWebPU");
+    @RequestScoped
+    public EntityManager create() {
+        return emf.createEntityManager();
     }
     
-    public void destroy(@Disposes EntityManagerFactory emf) {
-        emf.close();
+    public void destroy(@Disposes EntityManager em) {
+        em.close();
     }
+
 }

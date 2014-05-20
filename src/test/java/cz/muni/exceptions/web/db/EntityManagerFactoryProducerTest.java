@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package cz.muni.exceptions.db;
+package cz.muni.exceptions.web.db;
 
-import cz.muni.exceptions.AbstractExceptionsTest;
+import cz.muni.exceptions.web.AbstractExceptionsTest;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Archive;
 import org.junit.Assert;
@@ -27,12 +27,12 @@ import org.junit.Test;
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T16:36:20+0100
+ * @sa.date 2014-05-20T16:32:42+0100
  */
-public class EntityManagerProducerTest extends AbstractExceptionsTest {
+public class EntityManagerFactoryProducerTest extends AbstractExceptionsTest {
     
     @Inject
-    private EntityManager em;
+    private EntityManagerFactory emf;
     
     @Deployment
     public static Archive<?> getDeployment() {
@@ -40,8 +40,8 @@ public class EntityManagerProducerTest extends AbstractExceptionsTest {
     }
     
     @Test
-    public void testEntityManagerIsProduced() {
-        Assert.assertNotNull(em);
+    public void testEntityManagerFactoryIsProduced() {
+        Assert.assertNotNull(emf);
     }
 
 }

@@ -14,33 +14,34 @@
  * limitations under the License.
  */
 
-package cz.muni.exceptions.db;
+package cz.muni.exceptions.web.db;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Disposes;
-import javax.enterprise.inject.Produces;
+import cz.muni.exceptions.web.AbstractExceptionsTest;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.Archive;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T16:29:24+0100
+ * @sa.date 2014-05-20T16:36:20+0100
  */
-public class EntityManagerProducer {
+public class EntityManagerProducerTest extends AbstractExceptionsTest {
     
     @Inject
-    private EntityManagerFactory emf;
+    private EntityManager em;
     
-    @Produces
-    @RequestScoped
-    public EntityManager create() {
-        return emf.createEntityManager();
+    @Deployment
+    public static Archive<?> getDeployment() {
+        return createDeployment().addAsResource("META-INF/persistence.xml");
     }
     
-    public void destroy(@Disposes EntityManager em) {
-        em.close();
+    @Test
+    public void testEntityManagerIsProduced() {
+        Assert.assertNotNull(em);
     }
 
 }
