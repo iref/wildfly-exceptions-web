@@ -1,6 +1,11 @@
 package cz.muni.exceptions;
 
 import cz.muni.exceptions.pages.ExceptionsPage;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import org.apache.wicket.cdi.CdiConfiguration;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -10,7 +15,7 @@ import org.apache.wicket.protocol.http.WebApplication;
  * 
  * @see cz.muni.exceptions.Start#main(String[])
  */
-public class WicketApplication extends WebApplication {
+public class ExceptionsApplication extends WebApplication {
     /**
      * @see org.apache.wicket.Application#getHomePage()
      */
@@ -27,5 +32,15 @@ public class WicketApplication extends WebApplication {
         super.init();
 
         // add your configuration here
+        
+        try {
+            InitialContext context = new InitialContext();
+        
+            BeanManager beanManager = (BeanManager) context.lookup("java:comp/BeanManager");
+            new CdiConfiguration(beanManager).configure(this); 
+        } catch (NamingException ex) {
+            throw new IllegalStateException("BeanManager was not found in JNDI", ex);
+        }
+                
     }
 }
