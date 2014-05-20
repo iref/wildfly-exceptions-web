@@ -6,6 +6,9 @@
   <persistence-unit name="exceptionsWebPU">
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>  
         
+        <class>cz.muni.exceptions.web.model.Ticket</class>
+        <class>cz.muni.exceptions.web.model.TicketOccurrence</class>
+        
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>      
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
