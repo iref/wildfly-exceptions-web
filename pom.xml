@@ -58,6 +58,12 @@
                 <version>${wicket.version}</version>
             </dependency>
             -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>                        
 
             <!-- LOGGING DEPENDENCIES - LOG4J -->
             <dependency>
@@ -176,6 +182,10 @@
                 <snapshots>
                     <enabled>true</enabled>
                 </snapshots>
+            </repository>
+            <repository>
+              <id>jboss</id>
+              <url>https://repository.jboss.org/nexus/content/groups/public/</url>
             </repository>
 	</repositories>
 	</project>
