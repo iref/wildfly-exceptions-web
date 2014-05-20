@@ -18,14 +18,12 @@ package cz.muni.exceptions;
 
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import org.apache.wicket.cdi.AutoConversation;
 import org.apache.wicket.cdi.CdiConfiguration;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -46,7 +44,7 @@ public abstract class AbstractExceptionsTest {
     @Inject
     protected BeanManager beanManager;
     
-    public static Archive<?> createDeployment() {
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addClasses(AutoConversation.class, AbstractExceptionsTest.class)                
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
