@@ -15,13 +15,17 @@ import java.util.Objects;
 public class Ticket implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @Column(name = "id")
     private Long id;
     
+    @Column(name="detail_message")
     private String detailMessage;
     
+    @Column(name="stacktrace")
     private String stackTrace;
         
+    @Column(name = "ticket_class_id")
     private int ticketClassId;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
