@@ -4,6 +4,7 @@ package cz.muni.exceptions.web.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class TicketOccurrence implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @Column(name = "occurrence_timestamp")
     private Timestamp occurenceTimestamp;
         
     public TicketOccurrence() {        
