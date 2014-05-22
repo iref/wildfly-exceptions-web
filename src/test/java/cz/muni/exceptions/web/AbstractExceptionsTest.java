@@ -16,6 +16,7 @@
 
 package cz.muni.exceptions.web;
 
+import java.io.File;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import javax.naming.NamingException;
@@ -27,8 +28,8 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.jboss.shrinkwrap.resolver.api.maven.coordinate.MavenDependencies;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -46,11 +47,15 @@ public abstract class AbstractExceptionsTest {
     @Inject
     protected BeanManager beanManager;
     
-    public static JavaArchive createDeployment() {        
-        return ShrinkWrap.create(JavaArchive.class)
+    public static WebArchive createDeployment() {
+        File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
+                .resolve("org.apache.wicket:wicket-cdi:6.15.0")
+                .withTransitivity().asFile();
+        return ShrinkWrap.create(WebArchive.class)
                 .addClasses(AutoConversation.class, AbstractExceptionsTest.class)                
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
-                .addAsResource("META-INF/persistence.xml");
+                .addAsResource("META-INF/persistence.xml")
+                .addAsLibraries(libs);
     }
     
     @Before
