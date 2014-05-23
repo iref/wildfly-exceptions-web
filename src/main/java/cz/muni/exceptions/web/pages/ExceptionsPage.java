@@ -27,6 +27,7 @@ public class ExceptionsPage extends WebPage {
                 item.setModel(new CompoundPropertyModel<>(item.getModelObject()));
                 item.add(new Label("detailMessage"));
                 item.add(new Label("ticketClass"));
+                item.add(new Label("occurrences"));
             }
         };
         add(ticketsView);

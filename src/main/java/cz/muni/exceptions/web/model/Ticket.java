@@ -30,7 +30,7 @@ public class Ticket implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "ticket_id", referencedColumnName = "id")
-    private List<TicketOccurrence> occurences;
+    private List<TicketOccurrence> occurrences;
 
     public Ticket() {
     }
@@ -39,7 +39,7 @@ public class Ticket implements Serializable {
             TicketClass ticketClass, List<TicketOccurrence> occurences) {        
         this.detailMessage = detailMessage;
         this.stackTrace = stackTrace;        
-        this.occurences = occurences;
+        this.occurrences = occurences;
         this.ticketClassId = ticketClass == null 
                 ? TicketClass.UNKNOWN.getId() : ticketClass.getId();
     }
@@ -68,12 +68,12 @@ public class Ticket implements Serializable {
         this.stackTrace = stackTrace;
     }
 
-    public List<TicketOccurrence> getOccurences() {
-        return occurences;
+    public List<TicketOccurrence> getOccurrences() {
+        return occurrences;
     }
 
-    public void setOccurences(List<TicketOccurrence> occurences) {
-        this.occurences = occurences;
+    public void setOccurrences(List<TicketOccurrence> occurences) {
+        this.occurrences = occurences;
     }
     
     public TicketClass getTicketClass() {
