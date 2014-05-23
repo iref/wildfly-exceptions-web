@@ -1,6 +1,9 @@
 package cz.muni.exceptions.web;
 
 import cz.muni.exceptions.web.pages.ExceptionsPage;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.ActiveThemeProvider;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -41,6 +44,9 @@ public class ExceptionsApplication extends WebApplication {
         } catch (NamingException ex) {
             throw new IllegalStateException("BeanManager was not found in JNDI", ex);
         }
-                
+        
+        // install twitter bootstrap
+        BootstrapSettings bootstrapSettings = new BootstrapSettings();        
+        Bootstrap.install(this, bootstrapSettings);                
     }
 }
