@@ -23,6 +23,7 @@ public class Ticket implements Serializable {
     private String detailMessage;
     
     @Column(name="stacktrace")
+    @Lob
     private String stackTrace;
         
     @Column(name = "ticket_class_id")
