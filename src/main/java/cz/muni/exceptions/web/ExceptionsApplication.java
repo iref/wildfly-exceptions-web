@@ -1,14 +1,11 @@
 package cz.muni.exceptions.web;
 
+import cz.muni.exceptions.web.pages.ExceptionDetailPage;
 import cz.muni.exceptions.web.pages.ExceptionsPage;
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.settings.ActiveThemeProvider;
-import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import org.apache.wicket.cdi.CdiConfiguration;
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -43,10 +40,16 @@ public class ExceptionsApplication extends WebApplication {
             new CdiConfiguration(beanManager).configure(this); 
         } catch (NamingException ex) {
             throw new IllegalStateException("BeanManager was not found in JNDI", ex);
-        }
+        }                        
         
-        // install twitter bootstrap
-        BootstrapSettings bootstrapSettings = new BootstrapSettings();        
-        Bootstrap.install(this, bootstrapSettings);                
+        mountPages();
+    }
+    
+    /**
+     * Maps page classes to urls.
+     */
+    private void mountPages() {
+        mountPage("/exceptions", ExceptionsPage.class);
+        mountPage("/exceptions/detail", ExceptionDetailPage.class);
     }
 }
