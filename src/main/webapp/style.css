@@ -1,68 +1,89 @@
-body, p, li, a { font-family: georgia, times, serif;font-size:13pt;}
 h1, h2, h3 { font-family: 'Yanone Kaffeesatz', arial, serif; }
-body { margin:0;padding:0;}
-#hd {
-	width : 100%;
-	height : 87px;
-	background-color : #092E67;
-	margin-top : 0;
-	padding-top : 10px;
-	border-bottom : 1px solid #888;
-	z-index : 0;
+
+/*
+ * Base structure.
+ * From Twitter Bootstrap Dashboard Example: http://getbootstrap.com/examples/dashboard/
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
 }
-#ft {
-	position : absolute;
-	bottom : 0;
-	width : 100%;
-	height : 99px;
-	background-color : #6493D2;
-	border-top : 1px solid #888;
-	z-index : 0;
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
-#logo,#bd {
-	width : 650px;
-	margin: 0 auto;
-	padding: 25px 50px 0 50px;
+
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
 }
-#logo h1 {
-	color : white;
-	font-size:36pt;
-	display: inline;
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
 }
-#logo img { 
-	display:inline;
-	vertical-align: bottom;
-	margin-left : 50px;
-	margin-right : 5px;
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
 }
-body { margin-top : 0; padding-top : 0;}
-#logo, #logo h1 { margin-top : 0; padding-top : 0;}
-#bd {
-	position : absolute;
-	top : 75px;
-	bottom : 75px;
-	left : 50%;
-	margin-left : -325px;
-	z-index : 1;
-	overflow: auto;
-	background-color : #fff;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	-moz-box-shadow: 0px 0px 10px #888;
-	-webkit-box-shadow: 0px 0px 10px #888;
-	box-shadow: 0px 0px 10px #888;
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
 }
-a, a:visited, a:hover, a:active {
-	color : #6493D2;
+.nav-sidebar > .active > a {
+  color: #fff;
+  background-color: #428bca;
 }
-h2 {
-	padding : 0; margin:0;
-	font-size:36pt;
-	color:#FF5500;
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
 }
-h3 {
-	padding : 0; margin:0;
-	font-size:24pt;
-	color:#092E67;
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
 }
