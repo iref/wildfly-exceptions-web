@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<wicket:extend>
+    <div class="panel panel-default">
+        <div class="panel-heading" wicket:id="detailMessage"></div>
+        <div class="panel-body">
+            <div>
+                Category: <label wicket:id="ticketClass"></label>
+            </div>
+            <div>
+                Stacktrace: <pre wicket:id="stackTrace"></pre>
+            </div>            
+        </div>        
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Occurrence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr wicket:id="occurrences">
+                    <td wicket:id="occurrence"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" wicket:id="back">Back</a>
+    </div>
+</wicket:extend>
