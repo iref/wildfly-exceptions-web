@@ -74,7 +74,7 @@ public class ExceptionDetailPage extends AbstractExceptionsPage {
     private IModel<Ticket> preparePageModel(PageParameters params) {
         StringValue idValue = params.get("ticketId");
         if (idValue.isEmpty()) {
-            error("Ooops!! It's not possible to show ticket detail, because id of ticket wasn't provided");
+            getSession().error("Ooops!! It's not possible to show ticket detail, because id of ticket wasn't provided");
             throw new RestartResponseException(ExceptionsPage.class);            
         }
         
@@ -84,10 +84,10 @@ public class ExceptionDetailPage extends AbstractExceptionsPage {
             Ticket ticket = ticketService.getTicket(id);
             return new CompoundPropertyModel<Ticket>(ticket);
         } catch (NumberFormatException ex) {
-            error("Oopps!! Ticket does not exists.");
+            getSession().error("Oopps!! Ticket does not exists.");
             throw new RestartResponseException(ExceptionsPage.class);
         } catch (Exception ex) {
-            error("Ooppss!! We have some technical difficulties. Please try later.");
+            getSession().error("Ooppss!! We have some technical difficulties. Please try later.");
             return Model.of();
         }    
     }
