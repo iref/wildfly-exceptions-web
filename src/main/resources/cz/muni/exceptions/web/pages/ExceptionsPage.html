@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org">
-    <head>
-        <meta charset="utf-8" />
-        <title>Apache Wicket Quickstart</title>
-        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
-    </head>
-    <body>
-        <div id="hd">
-            <div id="logo">
-                <img src="logo.png" width="50px" height="50px" alt="Wicket Logo" />
-                <h1>Apache Wicket</h1>
-            </div>
-        </div>
-        <div id="bd">
-            <div wicket:id="tickets">
-                <h2 wicket:id="detailMessage"></h2>
-                <p wicket:id="ticketClass"></p>
-                <p wicket:id="occurrences"></p>
-            </div>
-        </div>
-        <div id="ft">
-        </div>
-    </body>
-</html>
+<wicket:extend>
+    <div class="table-responsive">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Detail Message</th>
+                    <th>Category</th>
+                    <th>Last Occurrence</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr wicket:id="tickets">
+                    <td wicket:id="id">[1]</td>
+                    <td wicket:id="detailMessage">[Something bad happened]</td>
+                    <td wicket:id="ticketClass">[Database]</td>
+                    <td wicket:id="latestOccurrence">[12.12.2012 12:12:12.12]</td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</wicket:extend>
+
