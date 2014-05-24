@@ -2,6 +2,8 @@ package cz.muni.exceptions.web;
 
 import cz.muni.exceptions.web.pages.ExceptionDetailPage;
 import cz.muni.exceptions.web.pages.ExceptionsPage;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -41,6 +43,10 @@ public class ExceptionsApplication extends WebApplication {
         } catch (NamingException ex) {
             throw new IllegalStateException("BeanManager was not found in JNDI", ex);
         }                        
+        
+        final BootstrapSettings bootstrapSettings = new BootstrapSettings();        
+        bootstrapSettings.setAutoAppendResources(false);
+        Bootstrap.install(this, bootstrapSettings);
         
         mountPages();
     }

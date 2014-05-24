@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <wicket:extend>
-    <div class="table-responsive">
+    <div>
+        <ul wicket:id="paginator"></ul>
+    </div>
+    <div class="table-responsive">        
         <table class="table table-stripped">
             <thead>
                 <tr>
@@ -13,7 +16,11 @@
             <tbody>
                 <tr wicket:id="tickets">
                     <td wicket:id="id">[1]</td>
-                    <td wicket:id="detailMessage">[Something bad happened]</td>
+                    <td>
+                        <a href="#" wicket:id="detailLink">
+                            <label wicket:id="detailMessage">[Something bad happened]</label>
+                        </a>
+                    </td>
                     <td wicket:id="ticketClass">[Database]</td>
                     <td wicket:id="latestOccurrence">[12.12.2012 12:12:12.12]</td>
                 </tr>
