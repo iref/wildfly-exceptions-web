@@ -55,7 +55,7 @@ public class ExceptionsApplication extends WebApplication {
      * Maps page classes to urls.
      */
     private void mountPages() {
-        mountPage("/exceptions", ExceptionsPage.class);
+        mountPage("/list", ExceptionsPage.class);
         mountPage("/exceptions/detail", ExceptionDetailPage.class);
     }
 }

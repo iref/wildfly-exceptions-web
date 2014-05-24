@@ -21,6 +21,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -57,6 +58,9 @@ public abstract class AbstractExceptionsPage extends WebPage {
         // add notification panel
         NotificationPanel notifier = new NotificationPanel(ComponentIds.NOTIFIER);
         add(notifier);
+        
+        add(new BookmarkablePageLink(ComponentIds.BRAND, ExceptionsPage.class));
+        add(new BookmarkablePageLink(ComponentIds.OVERVIEW, ExceptionsPage.class));
     }
     
     private static class ExternalResources {
@@ -75,6 +79,8 @@ public abstract class AbstractExceptionsPage extends WebPage {
      */
     private static class ComponentIds {
         public static final String NOTIFIER = "notifier";
+        public static final String BRAND = "brandLink";
+        public static final String OVERVIEW = "overviewLink";
     }
     
     /**
