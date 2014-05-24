@@ -15,7 +15,8 @@ import java.util.Objects;
 public class Ticket implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @SequenceGenerator(name = "ticketsIdSeq", sequenceName = "tickets_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticketsIdSeq")    
     @Column(name = "id")
     private Long id;
     
