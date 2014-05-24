@@ -29,5 +29,9 @@ public interface TicketService {
     Ticket getTicket(Long id);
     
     List<Ticket> getTickets();
-
+    
+    List<Ticket> getTickets(int first, int count);
+    
+    int count();
+            
 }

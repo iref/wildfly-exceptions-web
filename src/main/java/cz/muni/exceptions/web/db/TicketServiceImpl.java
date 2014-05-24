@@ -55,5 +55,20 @@ public class TicketServiceImpl implements TicketService {
         TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t", Ticket.class);
         return query.getResultList();
     }
+    
+    
+    @Override
+    public List<Ticket> getTickets(int first, int count) {
+        final TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t", Ticket.class);
+        return query.setFirstResult(first)
+                .setMaxResults(count)
+                .getResultList();
+    }
 
+    @Override
+    public int count() {
+        Long count = em.createQuery("SELECT count(*) FROM Ticket t", Long.class)
+                .getSingleResult();
+        return count.intValue();
+    }
 }
