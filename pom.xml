@@ -236,6 +236,7 @@
                         <encoding>UTF-8</encoding>
                         <showWarnings>true</showWarnings>
                         <showDeprecation>true</showDeprecation>
+                        <outputFileName>exceptions</outputFileName>
                     </configuration>
                 </plugin>                
                 <plugin>
@@ -273,7 +274,14 @@
                           </configuration>
                       </execution>                      
                   </executions>
-              </plugin>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <warName>exceptions</warName>
+                    </configuration>
+                </plugin>
             </plugins>
 	</build>
 
