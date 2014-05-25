@@ -52,6 +52,7 @@ public class ExceptionDetailPage extends AbstractExceptionsPage {
         super.onInitialize();
         
         add(new Label("detailMessage"));
+        add(new Label("className"));
         add(new Label("stackTrace"));
         add(new Label("ticketClass"));
         add(new ListView<TicketOccurrence>("occurrences") {

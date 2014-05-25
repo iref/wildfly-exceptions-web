@@ -53,7 +53,8 @@ public class ExceptionsPage extends AbstractExceptionsPage {
                 Link<Void> detailLink = createDetailMessageLink("detailLink", ticket.getId());
                 detailLink.add(new Label("detailMessage"));
                 item.add(detailLink);
-                
+
+                item.add(new Label("className"));
                 item.add(new Label("ticketClass"));
                 item.add(createLastOccurrenceLabel("latestOccurrence", item.getModelObject()));                
             }           

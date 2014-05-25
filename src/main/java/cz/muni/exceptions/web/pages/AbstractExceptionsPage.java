@@ -16,6 +16,7 @@
 
 package cz.muni.exceptions.web.pages;
 
+import com.sun.crypto.provider.AESParameters;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -24,6 +25,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 /**
  * Abstract page, that loads common resources and provides common layout.
@@ -50,6 +52,7 @@ public abstract class AbstractExceptionsPage extends WebPage {
         response.render(CssHeaderItem.forUrl(ExternalResources.BOOTSTRAP_CSS));
         response.render(JavaScriptHeaderItem.forUrl(ExternalResources.JQUERY));
         response.render(JavaScriptHeaderItem.forUrl(ExternalResources.BOOTSTRAP_JS));
+        response.render(CssHeaderItem.forReference(new PackageResourceReference(AbstractExceptionsPage.class, "style.css")));
     }    
         
     @Override
