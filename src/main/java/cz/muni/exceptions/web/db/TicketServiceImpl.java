@@ -30,16 +30,9 @@ import javax.persistence.TypedQuery;
  */
 @RequestScoped
 public class TicketServiceImpl implements TicketService {
-    
-    private final EntityManager em;
-    
+
     @Inject
-    public TicketServiceImpl(EntityManager em) {
-        if (em == null) {
-            throw new IllegalArgumentException("[EntityManager] is required and should not be null.");
-        }
-        this.em = em;
-    }
+    private EntityManager em;
 
     @Override
     public Ticket getTicket(Long id) {
