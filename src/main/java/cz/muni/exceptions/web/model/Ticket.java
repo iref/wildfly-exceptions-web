@@ -22,6 +22,9 @@ public class Ticket implements Serializable {
     
     @Column(name="detail_message")
     private String detailMessage;
+
+    @Column(name = "class_name")
+    private String className;
     
     @Column(name="stacktrace")
     @Lob
@@ -37,9 +40,10 @@ public class Ticket implements Serializable {
     public Ticket() {
     }
 
-    public Ticket(String detailMessage, String stackTrace, 
+    public Ticket(String detailMessage, String className, String stackTrace,
             TicketClass ticketClass, List<TicketOccurrence> occurences) {        
         this.detailMessage = detailMessage;
+        this.className = className;
         this.stackTrace = stackTrace;        
         this.occurrences = occurences;
         this.ticketClassId = ticketClass == null 
@@ -60,6 +64,14 @@ public class Ticket implements Serializable {
 
     public void setDetailMessage(String detailMessage) {
         this.detailMessage = detailMessage;
+    }
+
+    public String getClassName() {
+        return this.className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     public String getStackTrace() {
