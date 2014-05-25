@@ -20,18 +20,42 @@ import cz.muni.exceptions.web.model.Ticket;
 import java.util.List;
 
 /**
+ * Interface provides access to stored tickets.
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T17:05:51+0100
  */
 public interface TicketService {
-    
+
+    /**
+     * Retrieves ticket with given id.
+     *
+     * @param id identifier of ticket
+     * @return ticket with given id or {@code null}
+     * @throws java.lang.IllegalArgumentException if identifier is {@code null}
+     */
     Ticket getTicket(Long id);
-    
+
+    /**
+     * Retrieves all tickets from storage.
+     *
+     * @return list of all stored tickets
+     */
     List<Ticket> getTickets();
-    
+
+    /**
+     * Retrieves {@code count} tickets starting from {@code first} ticket.
+     *
+     * @param first index of first ticket, that should be retrieved
+     * @param count number of tickets, that should be retrieved
+     * @return list of tickets
+     */
     List<Ticket> getTickets(int first, int count);
-    
+
+    /**
+     * Returns total number of stored tickets.
+     *
+     * @return total number of tickets
+     */
     int count();
             
 }

@@ -23,18 +23,27 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
+ * Producer of EntityManagerFactory.
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T16:27:36+0100
  */
 public class EntityManagerFactoryProducer {
 
+    /**
+     * Produces new instance of EntityManagerFactory.
+     * @return instance of EntityManagerFactory
+     */
     @Produces
     @ApplicationScoped
     public EntityManagerFactory create() {
         return Persistence.createEntityManagerFactory("exceptionsWebPU");
     }
-    
+
+    /**
+     * Destroys given instance of EntityManagerFactory.
+     *
+     * @param emf entity manager factory, that should be destroyed.
+     */
     public void destroy(@Disposes EntityManagerFactory emf) {
         emf.close();
     }

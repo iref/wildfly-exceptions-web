@@ -26,14 +26,19 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 /**
+ * Provider of tickets for data presenter.
  *
  * @author Jan Ferko
  */
 public class TicketsDataProvider implements IDataProvider<Ticket> {
     
     @Inject
+    /** Service for fetching tickets. */
     private TicketService ticketService;
-    
+
+    /**
+     * Constructor creates new instance of provider and injects TicketService to itself.
+     */
     public TicketsDataProvider() {
         CdiContainer.get().getNonContextualManager().inject(this);
     }

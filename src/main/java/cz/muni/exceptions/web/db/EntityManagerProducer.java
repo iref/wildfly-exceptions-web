@@ -24,21 +24,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
+ * Producer, that creates new instances of EntityManager.
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T16:29:24+0100
  */
 public class EntityManagerProducer {
-    
+
+    /** Entity Manager Factory, that is used to create new Entity Manager */
     @Inject
     private EntityManagerFactory emf;
-    
+
+    /**
+     * Produces new instance of Entity Manager
+     * @return entity manager
+     */
     @Produces
     @RequestScoped
     public EntityManager create() {
         return emf.createEntityManager();
     }
-    
+
+    /**
+     * Destroys given instance of entity manager
+     * @param em entity manager, that should be destroyed.
+     */
     public void destroy(@Disposes EntityManager em) {
         em.close();
     }

@@ -8,7 +8,6 @@ import java.util.Objects;
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-04-15T05:40:59+0100
  */
 @Entity
 @Table(name = "tickets")

@@ -37,12 +37,11 @@ import org.junit.Test;
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T17:12:18+0100
  */
 public class TicketServiceTest extends AbstractExceptionsTest {
     
     @Inject 
-    private TicketService ticketService;
+    private TicketServiceImpl ticketService;
     
     @Inject
     private EntityManager entityManager;
@@ -67,24 +66,24 @@ public class TicketServiceTest extends AbstractExceptionsTest {
         cleanDatabase();
     }
 
-    @Test//(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testGetTicketForNullId() {
-//        Assert.assertNotNull(ticketService);   
-//        ticketService.getTicket(null);
+        Assert.assertNotNull(ticketService);
+        ticketService.getTicket(null);
     }
     
     @Test
     public void testGetTickets() {
-//        List<Ticket> tickets = ticketService.getTickets();
-//        Assert.assertNotNull(tickets);
-//        Assert.assertEquals(2, tickets.size());
+        List<Ticket> tickets = ticketService.getTickets();
+        Assert.assertNotNull(tickets);
+        Assert.assertEquals(2, tickets.size());
     }
 
     private void insertTickets() {
         TicketOccurrence to = new TicketOccurrence();
         to.setTimestamp(new Timestamp(new Date().getTime()));
         List<TicketOccurrence> tos = Arrays.asList(to);
-        Ticket t = new Ticket("Super detail message", "stacktrace", TicketClass.DATABASE, tos);
+        Ticket t = new Ticket("Super detail message", "UnicornException", "stacktrace", TicketClass.DATABASE, tos);
         
         entityManager.getTransaction().begin();
         entityManager.persist(t);        

@@ -20,6 +20,9 @@ import java.io.File;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import javax.naming.NamingException;
+
+import cz.muni.exceptions.web.db.TicketServiceImpl;
+import cz.muni.exceptions.web.model.Ticket;
 import org.apache.wicket.cdi.AutoConversation;
 import org.apache.wicket.cdi.CdiConfiguration;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -37,7 +40,6 @@ import org.junit.runner.RunWith;
 /**
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T14:59:41+0100
  */
 @RunWith(Arquillian.class)
 public abstract class AbstractExceptionsTest {
@@ -52,7 +54,7 @@ public abstract class AbstractExceptionsTest {
                 .resolve("org.apache.wicket:wicket-cdi:6.15.0")
                 .withTransitivity().asFile();
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AutoConversation.class, AbstractExceptionsTest.class)                
+                .addClasses(AutoConversation.class, AbstractExceptionsTest.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("META-INF/persistence.xml")
                 .addAsLibraries(libs);

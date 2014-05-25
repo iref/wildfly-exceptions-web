@@ -24,9 +24,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 /**
+ * JPA implementation of {@link cz.muni.exceptions.web.db.TicketService}.
  *
  * @author Jan Ferko
- * @sa.date 2014-05-20T17:06:30+0100
  */
 @RequestScoped
 public class TicketServiceImpl implements TicketService {
