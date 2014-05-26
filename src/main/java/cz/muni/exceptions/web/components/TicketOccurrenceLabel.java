@@ -32,7 +32,7 @@ import org.apache.wicket.model.Model;
 public class TicketOccurrenceLabel extends DateLabel {
     
     /** Converter for ticket occurrence timestamp. */
-    private static final DateConverter CONVERTER = new PatternDateConverter("yyyy-MM-dd hh:mm:ss", true);
+    private static final DateConverter CONVERTER = new PatternDateConverter("yyyy-MM-dd HH:mm:ss", true);
 
     /**
      * Constructor, that creates new instance of label.
